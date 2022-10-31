@@ -11,13 +11,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeFormComponent } from './pages/employee-form/employee-form.component';
+import { EmployeeListComponent } from './pages/employee-list/employee-list.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
