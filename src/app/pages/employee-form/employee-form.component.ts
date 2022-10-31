@@ -37,8 +37,8 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   submitForm() {
-    const employeeData = localStorage.getItem('EmployeeDetails')
-    let formData = employeeData ? JSON.parse(employeeData) : []
+    const employeeData = localStorage.getItem('EmployeeDetails');
+    let formData = employeeData ? JSON.parse(employeeData) : [];
 
     formData.push(this.employeeForm.value);
     localStorage.setItem('EmployeeDetails', JSON.stringify(formData));
