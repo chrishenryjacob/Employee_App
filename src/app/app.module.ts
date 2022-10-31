@@ -19,6 +19,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 import * as AllIcons from '@ant-design/icons-angular/icons';
 
@@ -52,7 +53,8 @@ registerLocaleData(en);
     NzSelectModule,
     NzFormModule,
     NzRadioModule,
-    NzMessageModule
+    NzMessageModule,
+    NzTableModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
