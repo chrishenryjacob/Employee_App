@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import * as diff from 'date-fns';
+import { differenceInCalendarDays } from 'date-fns';
 
 @Component({
   selector: 'app-employee-form',
@@ -10,7 +10,7 @@ import * as diff from 'date-fns';
 })
 export class EmployeeFormComponent implements OnInit {
 
-  disabledDate = (current: Date): boolean => diff.differenceInCalendarDays(current, new Date()) > 0;
+  disabledDate = (current: Date): boolean => differenceInCalendarDays(current, new Date()) > 0;
 
   employeeForm!: FormGroup;
 
@@ -72,8 +72,5 @@ export class EmployeeFormComponent implements OnInit {
       this.addPhoneNumber();
     }
   }
-}
-function differenceInCalendarDays(current: Date, today: any) {
-  throw new Error('Function not implemented.');
 }
 
