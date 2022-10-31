@@ -7,13 +7,18 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 import * as AllIcons from '@ant-design/icons-angular/icons';
 
@@ -42,6 +47,12 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule,
     NzIconModule.forRoot(icons),
+    ReactiveFormsModule,
+    NzDatePickerModule,
+    NzSelectModule,
+    NzFormModule,
+    NzRadioModule,
+    NzMessageModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

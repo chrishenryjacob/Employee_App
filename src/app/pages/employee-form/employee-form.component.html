@@ -1,1 +1,77 @@
-<p>employee-form works!</p>
+<form nz-form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>name</nz-form-label>
+    <nz-form-control [nzSpan]="12" [nzErrorTip]="nameErrorTpl">
+      <input nz-input formControlName="name" placeholder="Name" />
+      <ng-template #nameErrorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">Please input your username!</ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Address</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzErrorTip="Please input your address">
+      <textarea formControlName="address" nz-input rows="2" placeholder="Address"></textarea>
+    </nz-form-control>
+  </nz-form-item>
+
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>DOB</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-date-picker [nzDisabledDate]="disabledDate" formControlName="dob"></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Role</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select formControlName="role">
+        <nz-option nzValue="Admin" nzLabel="Admin"></nz-option>
+        <nz-option nzValue="Manager" nzLabel="Manager"></nz-option>
+        <nz-option nzValue="HR" nzLabel="HR"></nz-option>
+        <nz-option nzValue="Developer" nzLabel="Developer"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <div formArrayName="phone">
+    <nz-form-item *ngFor="let control of phoneList.controls; let i = index" [formGroupName]="i">
+      <nz-form-label [nzSpan]="7">
+        Phone
+      </nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Please input phone number or delete this field.">
+        <input nz-input placeholder="Phone" [formControlName]="'phone'" />
+        <span nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removePhoneNumber(i)"></span>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+  <nz-form-item>
+    <nz-form-control [nzOffset]="7" [nzSpan]="12">
+      <button nz-button nzType="dashed" class="add-button" type="button" (click)="addPhoneNumber()">
+        <span nz-icon nzType="plus"></span>
+        Add Phone
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Gender</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-radio-group formControlName="gender">
+        <label nz-radio nzValue="male">Male</label>
+        <label nz-radio nzValue="female">Female</label>
+      </nz-radio-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzOffset]="7" [nzSpan]="12">
+      <button nz-button nzType="primary" [disabled]="!employeeForm.valid">Submit</button>
+      <button nz-button (click)="resetForm()">Reset</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
