@@ -40,7 +40,10 @@ export class EmployeeFormComponent implements OnInit {
     const employeeData = localStorage.getItem('EmployeeDetails');
     let formData = employeeData ? JSON.parse(employeeData) : [];
 
-    formData.push(this.employeeForm.value);
+    let result = this.employeeForm.value;
+    result.phone = result.phone.map((item: any) => item.phone);
+
+    formData.push(result);
     localStorage.setItem('EmployeeDetails', JSON.stringify(formData));
 
     this.message.create('success', `${this.employeeForm.value.name} added to Employee List`);
